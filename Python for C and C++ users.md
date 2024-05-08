@@ -35,87 +35,109 @@ Functions: Basics and
 
 ### Why another python guide:
 Other guides...
-- Serve as a general intro to programming / CS problem solving: this is meant to build the vocabulary and filter out redundancy of someone who has programmed. 
 - Do not give context meaning behind the switch. 
-This guide is meant to be
-- Aimed at People who already know C / C++ and want/need to learn python asap
-- a reference without bloat.
-- under 7 pages (no more than 10)
-- a way to teach myself python
-Guide will not cover
-- Problem solving / Computational thought
-- OOP concepts: If SAing w butner, you will be comfortable with OOP assuming you have / are taking 36b
+- Serve as a general intro to programming / CS problem solving.
+  - In contrast, this is meant to build the vocabulary and filter out redundancy for someone who already has programming experience.
+
+This guide is meant to be:
+- aimed at people who already know C / C++ and want/need to learn Python asap
+- a reference without bloat
+- under 7 pages
+- a way to teach myself Python
+- 	
+This guide will not cover:
+- Problem solving / computational thought
+- OOP concepts
+  - If SAing with Professor Butner, it's presumed you're familiar with OOP from taking ECS 36B
 
 
 # intro to python (by Q)
-
-### **Python and C/C++:**
-**C was developed** 
+### C was developed
 - Much more abstract and readable than alternatives
-- Still pretty readable relatively speaking
-- Not very "featured" and 
-**C++ was developed...**
+- Still pretty readable, relatively speaking
+- Not very "featured" 
+### C++ was developed
 - More featured: 
 	- OOP or "C with classes"
 	- Try/throw errors
 	- Build in data structures / containers
 	- Huge innovation, More "there", less bottom up implementation
-**Current (eternal) state of C langs...** 
+### Current (eternal) state of C langs...
 - You have to manage memory
 - Generally requires a wider knowledge of syntax/cs theory. 
-- C++ suffers from "feature debt". C++ is often said to be *over featured* or bloated. There are so many cleaver trick and features that two people could be equipped with different "programming toolsets" to the point their code is almost incomprehensible to each other.
-These are still great languages. They are complex but very popular. They are industry standard, and *Far Faster* than python. I personally love them. Programming feels wrong without a `;` to me. I'm working on it. 
+- C++ suffers from "feature debt" and is often said to be *over featured* or bloated. There are so many clever trick and features, but two people could use them so differently that their code is almost incomprehensible to each other.
 
-**Python**:
+These are still great languages. They are complex but very popular. They are industry standard, and *far faster* than Python. I personally love them. Programming feels wrong without a `;` to me. I'm working on it. 
+
+### Python
 Python was designed to make programming more accessible, easier, and faster to code. 
 
-When should you use one over the other? 
-Python
+## When should you use one over the other? 
+### Python
 - Task automation (move files, rename files, scrape things from the internet)
 - Prototyping a more complex program: 
 - Literate programming (see more)
-- Ai / ML : 
-	- standard
+- AI / ML : 
+	- Python is the gold standard
 	- Generally optimized: (see mojo)
 - Data science
 - **Because you are sick of the right angles and boxes that confine the world**, you want something simple and warm to get something meaningful done ASAP.
 
-C / C++ 
+### C / C++ 
 - Things that need to run quickly (graphics, massive number crunching, systems)
 - Things that need to run many many many times
 - Thing that need to run on simple / old hardware
 - **Because you crave structure / specificity in a vague, gooey world**. You don't mind taking some extra time to make what your doing really good, really fast, and maybe even poetic. 
 
-## Set up
-Python is an interpreted language, meaning it is run interactively form
+## Getting started
+Python is an interpreted language, meaning it's run the same way interactively in a command prompt as it is run from a script. *You do not need to compile anything.*
 
 IDEs: 
-- IDLE: Default python IDE
-- PyCharm: Jet-brains' more "built out" IDE
-- VScode: if you use it already
+- IDLE: Default Python IDE
+- PyCharm: JetBrains' more "built out" IDE
+- VSCode: if you use it already
 - Jupyter Notebook: for documentation / words mixed with programming (see literate programming)
 
-Python is an interpreted language, meaning *You do not need to compile anything*.  
 Python sort of runs like a debugger already. Errors wont be found until they occur at runtime. (no compile time errors)
 
-**INSERT CLI CODE**
+Here's how the interpreter looks:
 ```bash
+>>> print("Hello world!")
+Hello world!
+>>> 3 + 7
+11
+>>> import math
+>>> math.pow(2, 3)
+8
+>>> 
 ```
-Debugging:
+Here's how a Python file that does much the same things might look:
+```py
+import math
 
+print("Hello world!")
+print(3 + 7)
+print(f'2^3 = {math.pow(2, 3)}')
+```
+And then you can run it like this:
+```sh
+$ python3 helloworld.py
+Hello world!
+11
+2^3 = 8
+```
 
 ## Implementation differences. 
 Some starting differences.
-If the languages can be broken down into *Grammar/syntax* (or in this case, ) and *vocabulary*, like a natural language
+If the languages can be broken down into *grammar/syntax* and *vocabulary*, like a natural language:
 - style is syntax
-- No `;`, (but sometimes `:`)
-- Comments are `#`
+- Drop the `;` at the ends of statements
+- Comment with `# comment` instead of `// comment`
 - Nesting with tab chars (which is really 4 spaces)
-- No main function
-- Functions are a little different. 
-- No `#include<stdlib>`, already included. 
-- File is basically set up, and you don't need to add anything unless you want to add some additional features through modules. 
-- All in all, Might seem totally different but they are more similar than not. 
+- You don't need to explicitly specify a `main()` function (if none is specified, it will treat the file somewhat like a shell script, interpreting one line at a time)
+- No `#include <stdlib>`, already included. 
+- File is basically set up, and you don't need to add anything unless you want to add some additional features through modules
+- All in all, might seem totally different but they are more similar than not. 
 
 
 **HERE C / C++ program**
