@@ -148,55 +148,59 @@ vs
 # Tools / Implementation. 
 ## Section 1: Basics: vars and printing/getting
 **In this section**: 
-- Vars
-	- Var assignment: 
+- vars
+	- Variable assignment 
 	- Type hinting
-	- Use variables in expressions 
-- Cli getting / printing
+	- How to use variables in expressions 
+- Printing to command line, getting command line input
 - Type conversion
 - Arithmetic operators. 
 
-Python is **Dynamically typed**, so we do not need to specific the data type. 
-We *can* **type hint** which makes our intentions clearer, and (may or may not) result in more optimized code. (See the "mojo" language). 
+Python is **dynamically typed**, so we do not need to specific the data type. 
+We *can* **type hint** which makes our intentions clearer, and may (or may not) result in more optimized code. (See the "mojo" language). 
 
 ```python
-x = 5 # var assignment
-y = z = 10 # multi var assingment or
-a, b = 0, 1 # multi var assingment 2
+# Variable assignment
+x = 5
+y = z = 10 	# Set both y and z to 10
+a, b = 0, 1 	# Set a=0 and b=1
 
 # Type hinting
 var1: int = 1
 str1: str = "Hello reader"
 
-# Use variables in expression
-result = x + y  # not really different from C
+# Using variables in expression
+result = x + y  # not really different from C; biggest difference is there's no result++ (just result += 1)
 ```
 
 **CLI input/getting**
 ```python
-print("hello world") # print to cli
+# Getting input from command line
 user_input = input("Give me a number: ")
+
+# Printing to command line
+print(str(user_input))		# Must cast to string because print() takes string input
 ```
 
-**Arithmetic operators**: all same, but we have floor div `//`
+**Arithmetic operators**: all same, except now we have floor division `//`
 ```python
 result = 10 + 5  # Addition
 result = 10 - 5  # Subtraction
 result = 10 * 5  # Multiplication
 result = 10 / 5  # Division
-result = 10 // 3 # Floor Division
-result = 10 % 3  # Modulus
+result = 10 // 3 # Floor Division, yields 3 in this case
+result = 10 % 3  # Modulus, yields 1 in this case
 ```
 
 
-**Type conversion.** 
+**Type conversion**
+Note that bools are `True` and `False`, capitalized.
 ```python
-int_value = int("123")  # Convert string to integer
-float_value = float("123.45")  # Convert string to float
-str_value = str(123)  # Convert integer to string
-bool_value = bool(1)  # Convert integer to boolean (True for 1)
+int_value = int("123")  # Convert string to integer (123)
+float_value = float("123.45")  # Convert string to float (123.45)
+str_value = str(123)  # Convert integer to string ("123")
+bool_value = bool(1)  # Convert integer to boolean (True)
 ```
-
 
 ## Section 2: Strings
 **In this section**: 
@@ -204,84 +208,84 @@ bool_value = bool(1)  # Convert integer to boolean (True for 1)
 - String access
 	- Characters
 	- Substrings / slicing
-- String class members / operations. 
+- String class members / operations
+
+Single quotes are the same as double quotes in Python. `'a'` is not categorically *different* from `"a"` like it would be in C. They're both just strings. Python doesn't even have a character or `char` type. All single characters are just strings of length 1.
+
 ### String Operations
-**String Concatenation:**
 ```python
 string1 = "Hello"
 string2 = "World"
-concatenated_string = string1 + " " + string2  # Results in 'Hello World'
-multiplied_string = string1 * 3  # Results in 'HelloHelloHello'
+concatenated_string = string1 + " " + string2  	# Results in 'Hello World'
+multiplied_string = string1 * 3  		# Results in 'HelloHelloHello'
 
-# String formatting / f-string
+# String formatting
 name = "Alice"
-age = 30
-formatted_string = f"{name} is {age} years old."  # f-string for formatting
+age = 14
+formatted_string = f"{name} is {age} years old."
 
 # string length:
-length = len(string) # returns 5
+length = len(name) 				# len("Alice") is 5
 ```
 
-Since you do not manage memory in python, you do not have to end terminate with `\n`
-### Accessing Characters in a String
-String access is similar, but now we are afforded Negative indexing. Since memory is managed, we can do negative indexing without finding the string length before hand. 
-
-**Access Characters:**
+String access is similar, but now we are afforded negative indexing. Since memory is managed, we can do negative indexing (to access characters at the end of the string) without finding the string length beforehand. 
 ```python
-# Access first Cahr
-first_char = string[0]  # Positive indexing
-first_char_neg = string[-len(string)]  # Neg. Ind. = to string[0]
+mystring = "Hello world!"
 
-# Access Last char
-last_char = string[-1]  # Negative indexing 
-last_char_pos = string[len(string)-1]  # Positive indexing equivalent to string[4]
+# Positive indexing
+first_char = mystring[0]			# "H"
+last_char = mystring[len(mystring) - 1]		# "!"
 
-# Access Middle
-middle_char = string[len(string)//2]  # For odd-length strings, gets the middle character
+# Negative indexing: index 0 indicates the first char, so -1 indicates the last char
+also_last_char = mystring[-1]			# Last char: "!"
+also_first_char = mystring[-len(string)]	# "H"
+
+# Accessing the middle of a string
+middle_char = string[len(string) // 2]  # For odd-length strings, gets the middle character
 ```
-**Index Out of Bounds:** Throws an error at runtime (not compile, there is no compile. )
+**Index Out of Bounds:** Throws an error at runtime (not compile time; there is no compile time!)
 
-### String Slicing / `:` indexing / Substrings
-
-Can define a range! no for loop
-**Create a Copy of a String Using Slicing:**
+### String Slicing using `:`
+This is how you specify substrings:
 ```python
 greeting = "Hello, World!"
-copy_of_greeting = greeting[:]  # Copies the entire string
-reversed_greeting = greeting[::-1]  # Reverses the string
-first_five = greeting[:5]  # Returns 'Hello'
-last_four = greeting[-4:]  # Returns 'rld!'
-three_letters_from_index_7 = greeting[7:10]  # Extracts 'Wor' from 'Hello, World!'
+copy_of_greeting = greeting[:]  	# Copies the entire string
+reversed_greeting = greeting[::-1]  	# Reverses the string
+first_five = greeting[:5]  		# 'Hello'
+last_four = greeting[-4:]  		# 'rld!'
+substring = greeting[7:10]  		# 'Wor'
 
-out_of_bounds_slice = greeting[20:]  # Returns an empty string if index is out of bounds
+out_of_bounds_slice = greeting[20:]  	# Returns an empty string if index is out of bounds
 ```
 
-### String Members / operations
+### String operations
+These operations return bool values:
 ```python
-# String examples
+sample = "hello world!"
+ends_with = sample.endswith("world!")	# True 
+starts_with = sample.startswith("he") 	# True
+is_alpha = sample.isalpha() 		# False because of the presence of "!"
+is_lower = sample.islower()  		# True (ignore the punctuation)
+is_upper = sample.isupper()  		# False
 
-# Returns Bool: evals whole string unless range is specified
-ends_with = sample.endswith("World!") 
-starts_with = sample.startswith("Hello") 
-is_alpha = sample.isalpha() 
-is_alnum = mixed.isalnum()  # Is alpha numeri
-is_digit = digits.isdigit()  # evals all chars in str
-is_lower = sample.islower()  # evals all chars
-is_upper = sample.isupper()  # evals all cased chars
-is_space = whitespace.isspace()  #evals
+whitespace = "\t\t\n\n"
+is_space = whitespace.isspace()  	# True
 
-# returns String
-lower_case = sample.lower()  # returns Lower case version of string
-upper_case = sample.upper()  # returns Upper case version!'
-stripped = "   Hello, World!   ".strip()  
-	# Rm leading and trailing whitespace (+ other chars) 
-	# -> "Hello, World!"
-left_stripped = "   Hello, World!   ".lstrip()  
-	# Remove l whitespace (+ other chars) 
-	# -> "Hello, World!   "
-right_stripped = "   Hello, World!   ".rstrip()  
-	# Rm trailing whitespace (+ other chars) 
-	# -> "   Hello, World!"
+mixed = "123abc"
+is_alnum = mixed.isalnum()  		# True
+is_digit = digits.isdigit()  		# False because of the presence of "abc"
+```
+
+These operations return string values:
+```python
+sample = "   i am Mixed CASE!!   ")
+lower_case = sample.lower()  		# "   i am mixed case!!   "
+upper_case = sample.upper()  		# "   I AM MIXED CASE!!   "
+stripped = sample.strip()		# "i am Mixed CASE!!"
+left_stripped = sample.lstrip()		# "i am Mixed CASE!!   "
+right_stripped = sample.rstrip()	# "   i am Mixed CASE!!"
+# And you can stack them too:
+funsies = sample.upper().rstrip()	# "   I AM MIXED CASE!!"
 ```
 
 
