@@ -35,87 +35,109 @@ Functions: Basics and
 
 ### Why another python guide:
 Other guides...
-- Serve as a general intro to programming / CS problem solving: this is meant to build the vocabulary and filter out redundancy of someone who has programmed. 
 - Do not give context meaning behind the switch. 
-This guide is meant to be
-- Aimed at People who already know C / C++ and want/need to learn python asap
-- a reference without bloat.
-- under 7 pages (no more than 10)
-- a way to teach myself python
-Guide will not cover
-- Problem solving / Computational thought
-- OOP concepts: If SAing w butner, you will be comfortable with OOP assuming you have / are taking 36b
+- Serve as a general intro to programming / CS problem solving.
+  - In contrast, this is meant to build the vocabulary and filter out redundancy for someone who already has programming experience.
+
+This guide is meant to be:
+- aimed at people who already know C / C++ and want/need to learn Python asap
+- a reference without bloat
+- under 7 pages
+- a way to teach myself Python
+- 	
+This guide will not cover:
+- Problem solving / computational thought
+- OOP concepts
+  - If SAing with Professor Butner, it's presumed you're familiar with OOP from taking ECS 36B
 
 
 # intro to python (by Q)
-
-### **Python and C/C++:**
-**C was developed** 
+### C was developed
 - Much more abstract and readable than alternatives
-- Still pretty readable relatively speaking
-- Not very "featured" and 
-**C++ was developed...**
+- Still pretty readable, relatively speaking
+- Not very "featured" 
+### C++ was developed
 - More featured: 
 	- OOP or "C with classes"
 	- Try/throw errors
 	- Build in data structures / containers
 	- Huge innovation, More "there", less bottom up implementation
-**Current (eternal) state of C langs...** 
+### Current (eternal) state of C langs...
 - You have to manage memory
 - Generally requires a wider knowledge of syntax/cs theory. 
-- C++ suffers from "feature debt". C++ is often said to be *over featured* or bloated. There are so many cleaver trick and features that two people could be equipped with different "programming toolsets" to the point their code is almost incomprehensible to each other.
-These are still great languages. They are complex but very popular. They are industry standard, and *Far Faster* than python. I personally love them. Programming feels wrong without a `;` to me. I'm working on it. 
+- C++ suffers from "feature debt" and is often said to be *over featured* or bloated. There are so many clever trick and features, but two people could use them so differently that their code is almost incomprehensible to each other.
 
-**Python**:
+These are still great languages. They are complex but very popular. They are industry standard, and *far faster* than Python. I personally love them. Programming feels wrong without a `;` to me. I'm working on it. 
+
+### Python
 Python was designed to make programming more accessible, easier, and faster to code. 
 
-When should you use one over the other? 
-Python
+## When should you use one over the other? 
+### Python
 - Task automation (move files, rename files, scrape things from the internet)
 - Prototyping a more complex program: 
 - Literate programming (see more)
-- Ai / ML : 
-	- standard
+- AI / ML : 
+	- Python is the gold standard
 	- Generally optimized: (see mojo)
 - Data science
 - **Because you are sick of the right angles and boxes that confine the world**, you want something simple and warm to get something meaningful done ASAP.
 
-C / C++ 
+### C / C++ 
 - Things that need to run quickly (graphics, massive number crunching, systems)
 - Things that need to run many many many times
 - Thing that need to run on simple / old hardware
 - **Because you crave structure / specificity in a vague, gooey world**. You don't mind taking some extra time to make what your doing really good, really fast, and maybe even poetic. 
 
-## Set up
-Python is an interpreted language, meaning it is run interactively form
+## Getting started
+Python is an interpreted language, meaning it's run the same way interactively in a command prompt as it is run from a script. *You do not need to compile anything.*
 
 IDEs: 
-- IDLE: Default python IDE
-- PyCharm: Jet-brains' more "built out" IDE
-- VScode: if you use it already
+- IDLE: Default Python IDE
+- PyCharm: JetBrains' more "built out" IDE
+- VSCode: if you use it already
 - Jupyter Notebook: for documentation / words mixed with programming (see literate programming)
 
-Python is an interpreted language, meaning *You do not need to compile anything*.  
 Python sort of runs like a debugger already. Errors wont be found until they occur at runtime. (no compile time errors)
 
-**INSERT CLI CODE**
+Here's how the interpreter looks:
 ```bash
+>>> print("Hello world!")
+Hello world!
+>>> 3 + 7
+11
+>>> import math
+>>> math.pow(2, 3)
+8
+>>> 
 ```
-Debugging:
+Here's how a Python file that does much the same things might look:
+```py
+import math
 
+print("Hello world!")
+print(3 + 7)
+print(f'2^3 = {math.pow(2, 3)}')
+```
+And then you can run it like this:
+```sh
+$ python3 helloworld.py
+Hello world!
+11
+2^3 = 8
+```
 
 ## Implementation differences. 
 Some starting differences.
-If the languages can be broken down into *Grammar/syntax* (or in this case, ) and *vocabulary*, like a natural language
+If the languages can be broken down into *grammar/syntax* and *vocabulary*, like a natural language:
 - style is syntax
-- No `;`, (but sometimes `:`)
-- Comments are `#`
+- Drop the `;` at the ends of statements
+- Comment with `# comment` instead of `// comment`
 - Nesting with tab chars (which is really 4 spaces)
-- No main function
-- Functions are a little different. 
-- No `#include<stdlib>`, already included. 
-- File is basically set up, and you don't need to add anything unless you want to add some additional features through modules. 
-- All in all, Might seem totally different but they are more similar than not. 
+- You don't need to explicitly specify a `main()` function (if none is specified, it will treat the file somewhat like a shell script, interpreting one line at a time)
+- No `#include <stdlib>`, already included. 
+- File is basically set up, and you don't need to add anything unless you want to add some additional features through modules
+- All in all, might seem totally different but they are more similar than not. 
 
 
 **HERE C / C++ program**
@@ -126,55 +148,59 @@ vs
 # Tools / Implementation. 
 ## Section 1: Basics: vars and printing/getting
 **In this section**: 
-- Vars
-	- Var assignment: 
+- vars
+	- Variable assignment 
 	- Type hinting
-	- Use variables in expressions 
-- Cli getting / printing
+	- How to use variables in expressions 
+- Printing to command line, getting command line input
 - Type conversion
 - Arithmetic operators. 
 
-Python is **Dynamically typed**, so we do not need to specific the data type. 
-We *can* **type hint** which makes our intentions clearer, and (may or may not) result in more optimized code. (See the "mojo" language). 
+Python is **dynamically typed**, so we do not need to specific the data type. 
+We *can* **type hint** which makes our intentions clearer, and may (or may not) result in more optimized code. (See the "mojo" language). 
 
 ```python
-x = 5 # var assignment
-y = z = 10 # multi var assingment or
-a, b = 0, 1 # multi var assingment 2
+# Variable assignment
+x = 5
+y = z = 10 	# Set both y and z to 10
+a, b = 0, 1 	# Set a=0 and b=1
 
 # Type hinting
 var1: int = 1
 str1: str = "Hello reader"
 
-# Use variables in expression
-result = x + y  # not really different from C
+# Using variables in expression
+result = x + y  # not really different from C; biggest difference is there's no result++ (just result += 1)
 ```
 
 **CLI input/getting**
 ```python
-print("hello world") # print to cli
+# Getting input from command line
 user_input = input("Give me a number: ")
+
+# Printing to command line
+print(str(user_input))		# Must cast to string because print() takes string input
 ```
 
-**Arithmetic operators**: all same, but we have floor div `//`
+**Arithmetic operators**: all same, except now we have floor division `//`
 ```python
 result = 10 + 5  # Addition
 result = 10 - 5  # Subtraction
 result = 10 * 5  # Multiplication
 result = 10 / 5  # Division
-result = 10 // 3 # Floor Division
-result = 10 % 3  # Modulus
+result = 10 // 3 # Floor Division, yields 3 in this case
+result = 10 % 3  # Modulus, yields 1 in this case
 ```
 
 
-**Type conversion.** 
+**Type conversion**
+Note that bools are `True` and `False`, capitalized.
 ```python
-int_value = int("123")  # Convert string to integer
-float_value = float("123.45")  # Convert string to float
-str_value = str(123)  # Convert integer to string
-bool_value = bool(1)  # Convert integer to boolean (True for 1)
+int_value = int("123")  # Convert string to integer (123)
+float_value = float("123.45")  # Convert string to float (123.45)
+str_value = str(123)  # Convert integer to string ("123")
+bool_value = bool(1)  # Convert integer to boolean (True)
 ```
-
 
 ## Section 2: Strings
 **In this section**: 
@@ -182,84 +208,84 @@ bool_value = bool(1)  # Convert integer to boolean (True for 1)
 - String access
 	- Characters
 	- Substrings / slicing
-- String class members / operations. 
+- String class members / operations
+
+Single quotes are the same as double quotes in Python. `'a'` is not categorically *different* from `"a"` like it would be in C. They're both just strings. Python doesn't even have a character or `char` type. All single characters are just strings of length 1.
+
 ### String Operations
-**String Concatenation:**
 ```python
 string1 = "Hello"
 string2 = "World"
-concatenated_string = string1 + " " + string2  # Results in 'Hello World'
-multiplied_string = string1 * 3  # Results in 'HelloHelloHello'
+concatenated_string = string1 + " " + string2  	# Results in 'Hello World'
+multiplied_string = string1 * 3  		# Results in 'HelloHelloHello'
 
-# String formatting / f-string
+# String formatting
 name = "Alice"
-age = 30
-formatted_string = f"{name} is {age} years old."  # f-string for formatting
+age = 14
+formatted_string = f"{name} is {age} years old."
 
 # string length:
-length = len(string) # returns 5
+length = len(name) 				# len("Alice") is 5
 ```
 
-Since you do not manage memory in python, you do not have to end terminate with `\n`
-### Accessing Characters in a String
-String access is similar, but now we are afforded Negative indexing. Since memory is managed, we can do negative indexing without finding the string length before hand. 
-
-**Access Characters:**
+String access is similar, but now we are afforded negative indexing. Since memory is managed, we can do negative indexing (to access characters at the end of the string) without finding the string length beforehand. 
 ```python
-# Access first Cahr
-first_char = string[0]  # Positive indexing
-first_char_neg = string[-len(string)]  # Neg. Ind. = to string[0]
+mystring = "Hello world!"
 
-# Access Last char
-last_char = string[-1]  # Negative indexing 
-last_char_pos = string[len(string)-1]  # Positive indexing equivalent to string[4]
+# Positive indexing
+first_char = mystring[0]			# "H"
+last_char = mystring[len(mystring) - 1]		# "!"
 
-# Access Middle
-middle_char = string[len(string)//2]  # For odd-length strings, gets the middle character
+# Negative indexing: index 0 indicates the first char, so -1 indicates the last char
+also_last_char = mystring[-1]			# Last char: "!"
+also_first_char = mystring[-len(string)]	# "H"
+
+# Accessing the middle of a string
+middle_char = string[len(string) // 2]  # For odd-length strings, gets the middle character
 ```
-**Index Out of Bounds:** Throws an error at runtime (not compile, there is no compile. )
+**Index Out of Bounds:** Throws an error at runtime (not compile time; there is no compile time!)
 
-### String Slicing / `:` indexing / Substrings
-
-Can define a range! no for loop
-**Create a Copy of a String Using Slicing:**
+### String Slicing using `:`
+This is how you specify substrings:
 ```python
 greeting = "Hello, World!"
-copy_of_greeting = greeting[:]  # Copies the entire string
-reversed_greeting = greeting[::-1]  # Reverses the string
-first_five = greeting[:5]  # Returns 'Hello'
-last_four = greeting[-4:]  # Returns 'rld!'
-three_letters_from_index_7 = greeting[7:10]  # Extracts 'Wor' from 'Hello, World!'
+copy_of_greeting = greeting[:]  	# Copies the entire string
+reversed_greeting = greeting[::-1]  	# Reverses the string
+first_five = greeting[:5]  		# 'Hello'
+last_four = greeting[-4:]  		# 'rld!'
+substring = greeting[7:10]  		# 'Wor'
 
-out_of_bounds_slice = greeting[20:]  # Returns an empty string if index is out of bounds
+out_of_bounds_slice = greeting[20:]  	# Returns an empty string if index is out of bounds
 ```
 
-### String Members / operations
+### String operations
+These operations return bool values:
 ```python
-# String examples
+sample = "hello world!"
+ends_with = sample.endswith("world!")	# True 
+starts_with = sample.startswith("he") 	# True
+is_alpha = sample.isalpha() 		# False because of the presence of "!"
+is_lower = sample.islower()  		# True (ignore the punctuation)
+is_upper = sample.isupper()  		# False
 
-# Returns Bool: evals whole string unless range is specified
-ends_with = sample.endswith("World!") 
-starts_with = sample.startswith("Hello") 
-is_alpha = sample.isalpha() 
-is_alnum = mixed.isalnum()  # Is alpha numeri
-is_digit = digits.isdigit()  # evals all chars in str
-is_lower = sample.islower()  # evals all chars
-is_upper = sample.isupper()  # evals all cased chars
-is_space = whitespace.isspace()  #evals
+whitespace = "\t\t\n\n"
+is_space = whitespace.isspace()  	# True
 
-# returns String
-lower_case = sample.lower()  # returns Lower case version of string
-upper_case = sample.upper()  # returns Upper case version!'
-stripped = "   Hello, World!   ".strip()  
-	# Rm leading and trailing whitespace (+ other chars) 
-	# -> "Hello, World!"
-left_stripped = "   Hello, World!   ".lstrip()  
-	# Remove l whitespace (+ other chars) 
-	# -> "Hello, World!   "
-right_stripped = "   Hello, World!   ".rstrip()  
-	# Rm trailing whitespace (+ other chars) 
-	# -> "   Hello, World!"
+mixed = "123abc"
+is_alnum = mixed.isalnum()  		# True
+is_digit = digits.isdigit()  		# False because of the presence of "abc"
+```
+
+These operations return string values:
+```python
+sample = "   i am Mixed CASE!!   ")
+lower_case = sample.lower()  		# "   i am mixed case!!   "
+upper_case = sample.upper()  		# "   I AM MIXED CASE!!   "
+stripped = sample.strip()		# "i am Mixed CASE!!"
+left_stripped = sample.lstrip()		# "i am Mixed CASE!!   "
+right_stripped = sample.rstrip()	# "   i am Mixed CASE!!"
+# And you can stack them too:
+funsies = sample.upper().rstrip()	# "   I AM MIXED CASE!!"
 ```
 
 
