@@ -44,11 +44,10 @@ This guide is meant to be:
 - a reference without bloat
 - under 7 pages
 - a way to teach myself Python
-- 	
 This guide will not cover:
 - Problem solving / computational thought
 - OOP concepts
-  - If SAing with Professor Butner, it's presumed you're familiar with OOP from taking ECS 36B
+- If SAing with Professor Butner, it's presumed you're familiar with OOP from taking ECS 36B
 
 
 # intro to python (by Q)
@@ -140,7 +139,7 @@ If the languages can be broken down into *grammar/syntax* and *vocabulary*, like
 - All in all, might seem totally different but they are more similar than not. 
 
 
-**HERE C / C++ program**
+**HERE C / C++ program** %%Write simple program comparing differences mentioned above%%
 vs
 **Python Program**
 
